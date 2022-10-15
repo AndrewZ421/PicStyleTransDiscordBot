@@ -1,4 +1,5 @@
 from ctypes import sizeof
+from email import message
 import discord
 from discord.ext import commands
 from PIL import Image
@@ -42,7 +43,7 @@ async def start(ctx, name):
         guild = ctx.guild
         steps = 2
         cur_step = 1
-        style_list = ['Starry Night','Skrik']
+        style_list = ['scream','udnie']
         start_message = await ctx.send(f"Step {cur_step}/{steps}: Upload your image here in 1 minute.")
 
         def check_image(message):
@@ -54,14 +55,14 @@ async def start(ctx, name):
         while True:
             try:
                 if cur_step==1:
-                    resp = await client.wait_for("message", timeout=60, check=check_image)
-                    image = resp.attachments[0]
+                    resp_start = await client.wait_for("message", timeout=60, check=check_image)
+                    image = resp_start.attachments[0]
                     cur_step += 1
                     await ctx.send("Successfully saved your image.")
                 elif cur_step==2:
                     style_str = '/'.join(style_list)
                     await ctx.send(f"Step {cur_step}/{steps}: Type your sytle here: {style_str}")
-                    resp = await client.wait_for("message", timeout=60, check=check_style)
+                    resp_style = await client.wait_for("message", timeout=60, check=check_style)
                     cur_step += 1
                 elif cur_step==3:
                     await ctx.send(f"Generating your emoji...")
@@ -75,7 +76,7 @@ async def start(ctx, name):
                         shutil.copyfileobj(r.raw, out_file)
                     # operate  
                     # os.system("python evaluate.py --checkpoint check_point/wave.ckpt  --in-path " + imageName + " --out-path " + imageName)
-                    os.system("python evaluate.py --checkpoint check_point/udnie.ckpt  --in-path " + imageName + " --out-path " + imageName)
+                    os.system("python evaluate.py --checkpoint check_point/" + resp_style.content + ".ckpt  --in-path " + imageName + " --out-path " + imageName)
                     print('Processing time:', time.time()-start)
                     file = discord.File(imageName)
                     await ctx.send(file=file)
