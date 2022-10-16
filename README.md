@@ -1,33 +1,34 @@
-## Fast Style Transfer in [TensorFlow](https://github.com/tensorflow/tensorflow)
+## Team members
 
-Add styles from famous paintings to any photo in a fraction of a second! [You can even style videos!](#video-stylization)
+Haoran Song, Mingjian Zhao, Jiarong Liang
 
-<p align = 'center'>
-<img src = 'examples/style/udnie.jpg' height = '246px'>
-<img src = 'examples/content/stata.jpg' height = '246px'>
-<a href = 'examples/results/stata_udnie.jpg'><img src = 'examples/results/stata_udnie_header.jpg' width = '627px'></a>
-</p>
-<p align = 'center'>
-It takes 100ms on a 2015 Titan X to style the MIT Stata Center (1024×680) like Udnie, by Francis Picabia.
-</p>
+## Inspiration
 
-Our implementation is based off of a combination of Gatys' [A Neural Algorithm of Artistic Style](https://arxiv.org/abs/1508.06576), Johnson's [Perceptual Losses for Real-Time Style Transfer and Super-Resolution](http://cs.stanford.edu/people/jcjohns/eccv16/), and Ulyanov's [Instance Normalization](https://arxiv.org/abs/1607.08022). 
+Want to turn your favorite photo into a stunning painting? Start, Upload and Get. Turn photos into masterpieces. Experience the era of Vincent, Leonardo da Vinci with no distance.
 
-### Sponsorship
-Please consider sponsoring my work on this project!
+## What it does
 
-### License
-Copyright (c) 2016 Logan Engstrom. Contact me for commercial use (or rather any use that is not academic research) (email: engstrom at my university's domain dot edu). Free for research use, as long as proper attribution is given and this copyright notice is retained.
+Users can upload their own photos on the discord channel, select the paintings that need style transfer, and then they will get new photos that with the master's style, and the new photos will be automatically added to the emoji.
 
-## Video Stylization 
-Here we transformed every frame in a video, then combined the results. [Click to go to the full demo on YouTube!](https://www.youtube.com/watch?v=xVJwwWQlQ1o) The style here is Udnie, as above.
-<div align = 'center'>
-     <a href = 'https://www.youtube.com/watch?v=xVJwwWQlQ1o'>
-        <img src = 'examples/results/fox_udnie.gif' alt = 'Stylized fox video. Click to go to YouTube!' width = '800px' height = '400px'>
-     </a>
-</div>
+## How we built it
 
-See how to generate these videos [here](#stylizing-video)!
+Using CNN neural network, for each masterwork, more than 80,000 pictures in the coco data set on the Google Colab are used for training to obtain a TensorFlow. When users upload photos and choose the style, the discord robot will stylize the photos with the corresponding model.
+
+## Challenges we ran into
+
+It is difficult to train a good model with a large number of images in one day. How to deploy TensorFlow models on discord is also our first contact. Fortunately, we all worked together to overcome one problem after another.
+
+## Accomplishments that we're proud of
+
+Neural networks may sound like a long way from our lives, but in just one day, we can make it easy for people to stylize their own photos without even having to download an app. Start, Upload and Get.
+
+## What we learned
+
+Teamwork is the key to success. The power of one person is very limited, but many people work together to make great things in a very short time.
+
+## What's next for style transfer discord bot
+
+Provide more stylization options, enrich the functions of the discord robot, and make it easier for people to process photos.
 
 ## Image Stylization
 We added styles from various paintings to a photo of Chicago. Click on thumbnails to see full applied style images.
@@ -53,84 +54,3 @@ We added styles from various paintings to a photo of Chicago. Click on thumbnail
 <a href = 'examples/style/the_scream.jpg'><img src = 'examples/thumbs/the_scream.jpg' height = '200px'></a>
 </div>
 
-## Implementation Details
-Our implementation uses TensorFlow to train a fast style transfer network. We use roughly the same transformation network as described in Johnson, except that batch normalization is replaced with Ulyanov's instance normalization, and the scaling/offset of the output `tanh` layer is slightly different. We use a loss function close to the one described in Gatys, using VGG19 instead of VGG16 and typically using "shallower" layers than in Johnson's implementation (e.g. we use `relu1_1` rather than `relu1_2`). Empirically, this results in larger scale style features in transformations.
-## Virtual Environment Setup (Anaconda) - Windows/Linux
-Tested on
-| Spec                        |                                                             |
-|-----------------------------|-------------------------------------------------------------|
-| Operating System            | Windows 10 Home                                             |
-| GPU                         | Nvidia GTX 2080 TI                                          |
-| CUDA Version                | 11.0                                                        |
-| Driver Version              | 445.75                                                      |
-### Step 1：Install Anaconda
-https://docs.anaconda.com/anaconda/install/
-### Step 2：Build a virtual environment
-Run the following commands in sequence in Anaconda Prompt:
-```
-conda create -n tf-gpu tensorflow-gpu=2.1.0
-conda activate tf-gpu
-conda install jupyterlab
-jupyter lab
-```
-Run the following command in the notebook or just conda install the package:
-```
-!pip install moviepy==1.0.2
-```
-Follow the commands below to use fast-style-transfer
-## Documentation
-### Training Style Transfer Networks
-Use `style.py` to train a new style transfer network. Run `python style.py` to view all the possible parameters. Training takes 4-6 hours on a Maxwell Titan X. [More detailed documentation here](docs.md#stylepy). **Before you run this, you should run `setup.sh`**. Example usage:
-
-    python style.py --style path/to/style/img.jpg \
-      --checkpoint-dir checkpoint/path \
-      --test path/to/test/img.jpg \
-      --test-dir path/to/test/dir \
-      --content-weight 1.5e1 \
-      --checkpoint-iterations 1000 \
-      --batch-size 20
-
-### Evaluating Style Transfer Networks
-Use `evaluate.py` to evaluate a style transfer network. Run `python evaluate.py` to view all the possible parameters. Evaluation takes 100 ms per frame (when batch size is 1) on a Maxwell Titan X. [More detailed documentation here](docs.md#evaluatepy). Takes several seconds per frame on a CPU. **Models for evaluation are [located here](https://drive.google.com/drive/folders/0B9jhaT37ydSyRk9UX0wwX3BpMzQ?resourcekey=0-Z9LcNHC-BTB4feKwm4loXw&usp=sharing)**. Example usage:
-
-    python evaluate.py --checkpoint path/to/style/model.ckpt \
-      --in-path dir/of/test/imgs/ \
-      --out-path dir/for/results/
-
-### Stylizing Video
-Use `transform_video.py` to transfer style into a video. Run `python transform_video.py` to view all the possible parameters. Requires `ffmpeg`. [More detailed documentation here](docs.md#transform_videopy). Example usage:
-
-    python transform_video.py --in-path path/to/input/vid.mp4 \
-      --checkpoint path/to/style/model.ckpt \
-      --out-path out/video.mp4 \
-      --device /gpu:0 \
-      --batch-size 4
-
-### Requirements
-You will need the following to run the above:
-- TensorFlow 0.11.0
-- Python 2.7.9, Pillow 3.4.2, scipy 0.18.1, numpy 1.11.2
-- If you want to train (and don't want to wait for 4 months):
-  - A decent GPU
-  - All the required NVIDIA software to run TF on a GPU (cuda, etc)
-- ffmpeg 3.1.3 if you want to stylize video
-
-### Citation
-```
-  @misc{engstrom2016faststyletransfer,
-    author = {Logan Engstrom},
-    title = {Fast Style Transfer},
-    year = {2016},
-    howpublished = {\url{https://github.com/lengstrom/fast-style-transfer/}},
-    note = {commit xxxxxxx}
-  }
-```
-
-### Attributions/Thanks
-- This project could not have happened without the advice (and GPU access) given by [Anish Athalye](http://www.anishathalye.com/). 
-  - The project also borrowed some code from Anish's [Neural Style](https://github.com/anishathalye/neural-style/)
-- Some readme/docs formatting was borrowed from Justin Johnson's [Fast Neural Style](https://github.com/jcjohnson/fast-neural-style)
-- The image of the Stata Center at the very beginning of the README was taken by [Juan Paulo](https://juanpaulo.me/)
-
-### Related Work
-- Michael Ramos ported this network [to use CoreML on iOS](https://medium.com/@rambossa/diy-prisma-fast-style-transfer-app-with-coreml-and-tensorflow-817c3b90dacd)
