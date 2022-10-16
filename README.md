@@ -2,6 +2,38 @@
 
 Haoran Song, Mingjian Zhao, Jiarong Liang
 
+## Image Stylization
+We added styles from various paintings to a photo of Chicago. Click on thumbnails to see full applied style images.
+<div align='center'>
+<img src = 'examples/content/chicago.jpg' height="200px">
+</div>
+     
+<div align = 'center'>
+<a href = 'examples/style/wave.jpg'><img src = 'examples/thumbs/wave.jpg' height = '200px'></a>
+<img src = 'examples/results/chicago_wave.jpg' height = '200px'>
+<img src = 'examples/results/chicago_udnie.jpg' height = '200px'>
+<a href = 'examples/style/udnie.jpg'><img src = 'examples/thumbs/udnie.jpg' height = '200px'></a>
+<br>
+<a href = 'examples/style/rain_princess.jpg'><img src = 'examples/thumbs/rain_princess.jpg' height = '200px'></a>
+<img src = 'examples/results/chicago_rain_princess.jpg' height = '200px'>
+<img src = 'examples/results/chicago_la_muse.jpg' height = '200px'>
+<a href = 'examples/style/la_muse.jpg'><img src = 'examples/thumbs/la_muse.jpg' height = '200px'></a>
+
+<br>
+<a href = 'examples/style/the_shipwreck_of_the_minotaur.jpg'><img src = 'examples/thumbs/the_shipwreck_of_the_minotaur.jpg' height = '200px'></a>
+<img src = 'examples/results/chicago_wreck.jpg' height = '200px'>
+<img src = 'examples/results/chicago_the_scream.jpg' height = '200px'>
+<a href = 'examples/style/the_scream.jpg'><img src = 'examples/thumbs/the_scream.jpg' height = '200px'></a>
+
+<br>
+<a href = 'examples/style/freedom.jpg'><img src = 'examples/thumbs/freedom.jpg' witdh = '100px' height = '200px'></a>
+<img src = 'examples/results/chicago_freedom.jpg' height = '200px'>
+<img src = 'examples/results/chicago_MonaLisa.jpg' height = '200px'>
+<a href = 'examples/style/MonaLisa.jpg'><img src = 'examples/thumbs/MonaLisa.jpg' height = '200px'></a>
+</div>
+
+
+
 ## Inspiration
 
 Want to turn your favorite photo into a stunning painting? Start, Upload and Get. Turn photos into masterpieces. Experience the era of Vincent, Leonardo da Vinci with no distance.
@@ -29,34 +61,4 @@ Teamwork is the key to success. The power of one person is very limited, but man
 ## What's next for style transfer discord bot
 
 Provide more stylization options, enrich the functions of the discord robot, and make it easier for people to process photos.
-
-## Image Stylization
-We added styles from various paintings to a photo of Chicago. Click on thumbnails to see full applied style images.
-<div align='center'>
-<img src = 'examples/content/chicago.jpg' height="200px">
-</div>
-     
-<div align = 'center'>
-<a href = 'examples/style/wave.jpg'><img src = 'examples/thumbs/wave.jpg' height = '200px'></a>
-<img src = 'examples/results/chicago_wave.jpg' height = '200px'>
-<img src = 'examples/results/chicago_udnie.jpg' height = '200px'>
-<a href = 'examples/style/udnie.jpg'><img src = 'examples/thumbs/udnie.jpg' height = '200px'></a>
-<br>
-<a href = 'examples/style/rain_princess.jpg'><img src = 'examples/thumbs/rain_princess.jpg' height = '200px'></a>
-<img src = 'examples/results/chicago_rain_princess.jpg' height = '200px'>
-<img src = 'examples/results/chicago_la_muse.jpg' height = '200px'>
-<a href = 'examples/style/la_muse.jpg'><img src = 'examples/thumbs/la_muse.jpg' height = '200px'></a>
-
-<br>
-<a href = 'examples/style/the_shipwreck_of_the_minotaur.jpg'><img src = 'examples/thumbs/the_shipwreck_of_the_minotaur.jpg' height = '200px'></a>
-<img src = 'examples/results/chicago_wreck.jpg' height = '200px'>
-<img src = 'examples/results/chicago_the_scream.jpg' height = '200px'>
-<a href = 'examples/style/the_scream.jpg'><img src = 'examples/thumbs/the_scream.jpg' height = '200px'></a>
-
-<br>
-<a href = 'examples/style/freedom.jpg'><img src = 'examples/thumbs/freedom.jpg' height = '200px'></a>
-<img src = 'examples/results/chicago_freedom.jpg' height = '200px'>
-<img src = 'examples/results/chicago_MonaLisa.jpg' height = '200px'>
-<a href = 'examples/style/MonaLisa.jpg'><img src = 'examples/thumbs/MonaLisa.jpg' height = '200px'></a>
-</div>
 
