@@ -26,20 +26,17 @@ async def on_ready():
 @commands.has_role('Admin')
 async def info(ctx):
     title = "Click here to start"
-    embed = discord.Embed(title=title, url="https://discord.com/channels/1030676263884562432/1030905514227412992",
+    embed = discord.Embed(title=title, url="https://discord.com/channels/1030676263884562432/1031017766506991616",
                             description="Simpily type !start and follow the steps to build your own emoji!",
                             color=0x82111f)
     embed.set_thumbnail(url="https://hackwashu.com/img/about.562d9937.png")
     embed.add_field(name="!start", value="start to build your emoji", inline=False)
     embed.set_footer(text="Hack WashU", icon_url="https://hackwashu.com/img/about.562d9937.png")
-
-    # embed.add_field(value="欢迎来到HR Space!")
-
     await ctx.send(embed=embed)
 
 @client.command()
 async def start(ctx, name):
-    if ctx.channel.id == 1030905514227412992:
+    if ctx.channel.id == 1030905514227412992 or ctx.channel.id == 1031017766506991616:
         guild = ctx.guild
         steps = 2
         cur_step = 1
@@ -69,13 +66,9 @@ async def start(ctx, name):
                     r = requests.get(image, stream=True)
                     start = time.time()
                     imageName = str(uuid.uuid4()) + '.jpg'
-                    # imageName = 'input\\' + str(uuid.uuid4()) + '.jpg'
-                    # print(imageName)
                     with open(imageName, 'wb') as out_file:
                         print('Saving image: ' + imageName)
                         shutil.copyfileobj(r.raw, out_file)
-                    # operate  
-                    # os.system("python evaluate.py --checkpoint check_point/wave.ckpt  --in-path " + imageName + " --out-path " + imageName)
                     os.system("python evaluate.py --checkpoint check_point/" + resp_style.content + "/fns.ckpt  --in-path " + imageName + " --out-path " + imageName)
                     print('Processing time:', time.time()-start)
                     file = discord.File(imageName)
