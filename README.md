@@ -52,5 +52,11 @@ We added styles from various paintings to a photo of Chicago. Click on thumbnail
 <img src = 'examples/results/chicago_wreck.jpg' height = '200px'>
 <img src = 'examples/results/chicago_the_scream.jpg' height = '200px'>
 <a href = 'examples/style/the_scream.jpg'><img src = 'examples/thumbs/the_scream.jpg' height = '200px'></a>
+
+<br>
+<a href = 'examples/style/freedom.jpg'><img src = 'examples/thumbs/freedom.jpg' height = '200px'></a>
+<img src = 'examples/results/chicago_freedom.jpg' height = '200px'>
+<img src = 'examples/results/chicago_MonaLisa.jpg' height = '200px'>
+<a href = 'examples/style/MonaLisa.jpg'><img src = 'examples/thumbs/MonaLisa.jpg' height = '200px'></a>
 </div>
 
