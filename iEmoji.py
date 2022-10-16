@@ -43,7 +43,7 @@ async def start(ctx, name):
         guild = ctx.guild
         steps = 2
         cur_step = 1
-        style_list = ['scream','udnie']
+        style_list = ['scream','udnie', 'freedom', 'vincent', 'mona_lisa', 'wave']
         start_message = await ctx.send(f"Step {cur_step}/{steps}: Upload your image here in 1 minute.")
 
         def check_image(message):
@@ -61,7 +61,7 @@ async def start(ctx, name):
                     await ctx.send("Successfully saved your image.")
                 elif cur_step==2:
                     style_str = '/'.join(style_list)
-                    await ctx.send(f"Step {cur_step}/{steps}: Type your sytle here: {style_str}")
+                    await ctx.send(f"Step {cur_step}/{steps}: Type your style here: {style_str}")
                     resp_style = await client.wait_for("message", timeout=60, check=check_style)
                     cur_step += 1
                 elif cur_step==3:
@@ -76,7 +76,7 @@ async def start(ctx, name):
                         shutil.copyfileobj(r.raw, out_file)
                     # operate  
                     # os.system("python evaluate.py --checkpoint check_point/wave.ckpt  --in-path " + imageName + " --out-path " + imageName)
-                    os.system("python evaluate.py --checkpoint check_point/" + resp_style.content + ".ckpt  --in-path " + imageName + " --out-path " + imageName)
+                    os.system("python evaluate.py --checkpoint check_point/" + resp_style.content + "/fns.ckpt  --in-path " + imageName + " --out-path " + imageName)
                     print('Processing time:', time.time()-start)
                     file = discord.File(imageName)
                     await ctx.send(file=file)
